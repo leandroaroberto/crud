@@ -11,7 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     //return view('welcome');
     return view('index');
-});
+});*/
+
+Route::get('/','CrudController@index');
+
+Route::get('/add', 'CrudController@create');
+Route::post('/add', 'CrudController@store')->name('add');
+
+Route::get('/{id}', 'CrudController@edit')->name('edit');
+Route::post('/update', 'CrudController@update')->name('update');

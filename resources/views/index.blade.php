@@ -2,42 +2,28 @@
 @section('content')
 
 <div class="container">
-  <h1 class="text-center">CRUD Example</h1>
 
-  @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-    	<button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-    </div>
-  @elseif ($message = Session::get('error'))
-    <div class="alert alert-danger alert-block">
-      <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-    </div>
-  @endif
+    <h1 class="text-center">CRUD Example - List</h1>
+  @include('layouts.header')
 
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    <table class="table table-stripped">
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th></th>
+    </tr>
+    @foreach($dados as $dado)
+      <tr>
+          <td>{{$dado->nome}}</td>
+          <td>{{ $dado->descricao}}</td>
+          <td>
+            <a href="/{{$dado->id}}">Editar</a>
+            Remover
+          </td>
+      </tr>
+    @endforeach
+  </table>
 
-<div class="form-group">
-{!! Form::open(['url' => 'foo/bar']) !!}
-<p>
-    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{old('nome')}}" required/>
-</p>
-<p>
-    <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" value="{{old('descricao')}}" />
-</p>
-<p>
-    <input type="submit" class="btn btn-success btn-block" value="Salvar"/>
-</p>
-{!! Form::close() !!}
+
 </div>
-
 @endsection

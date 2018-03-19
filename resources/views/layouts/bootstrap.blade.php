@@ -11,6 +11,20 @@
     <title>CRUD</title>
   </head>
   <body>
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <a href="/" class="btn btn-primary">Home</a>
+
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Crud options
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="/add">Add</a>
+      <a class="dropdown-item" href="">Change</a>
+      <a class="dropdown-item" href="#">Remove</a>
+    </div>
+  </div>
+</div>
 
     @yield('content')
 
