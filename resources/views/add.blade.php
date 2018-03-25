@@ -8,7 +8,7 @@
 
   <div class="form-group">
   {!! Form::open(['route' => $action,'method' => $method]) !!}
-  <input type="hidden" name="id" value="{{ isset($dado->id) ? $dado->id : null }}" />
+  <input type="hidden" name="id" value="{{ isset($dados->id) ? $dados->id : null }}" />
   <p>
       <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{ isset($dados->nome) ? $dados->nome :old('nome')}}"/>
   </p>
