@@ -8,7 +8,7 @@
     <h1 class="text-center">CRUD - {{ $operacao}}</h1>
   @include('layouts.header')
 
-  {!! Form::open(['route' => $action,'method' => $method]) !!}
+  {!! Form::model($dados, ['route' => ['update', $dados->id]]) !!}  
   
   @include('components.form')
   

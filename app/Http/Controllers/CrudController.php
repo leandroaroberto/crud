@@ -3,10 +3,19 @@
 namespace Crud\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Crud\Http\Requests\CrudRequest;
 use Crud\Crud;
+
+
 
 class CrudController extends Controller
 {
+
+    public function __construct()
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,22 +44,19 @@ class CrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-      $request->validate([
-        'nome' => 'required|max:20|unique:crud,nome',
-      ]);
-
-      $crud = $request->id != null  ? Crud::findOrFail($request->id) : new Crud;
-      $crud->nome = $request->nome;
-      $crud->descricao = $request->descricao;
-
-      if($crud->save())
+    public function store(CrudRequest $request)
+    {        
+      try
       {
-        return redirect('/')->with('success','Dados gravados com sucesso!');
+        //$crud = Crud::findOrFail($request->id) ? $crud->update() : Crud::create($request->all());               
+        Crud::create($request->all());        
+      }  
+      catch(\Exception $e)
+      {
+        return redirect('/')->with('error','Erro ao gravar os dados a operação foi cancelada: '. $e->getMessage());
       }
-      return redirect('/')->with('error','Erro ao gravar os dados a operação foi cancelada.');
-
+      return redirect('/')->with('success','Dados gravados com sucesso!');
+      
     }
 
     /**
@@ -59,10 +65,12 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id = null)
     {
         $dados = Crud::where('id','=',$id)->first();
-        return view('add')->with(['operacao' => 'Atualizar','action'=>'update', 'btn' => 'Atualizar', 'method' => 'POST', 'dados' => $dados ]);
+        if(! $dados)
+            return view('notFound');
+        return view('update')->with(['operacao' => 'Atualizar', 'btn' => 'Atualizar', 'dados' => $dados]);
     }
 
     /**
@@ -75,11 +83,33 @@ class CrudController extends Controller
     {
         try{
           $remover = Crud::findOrFail($request->id);
-          $remover->delete();
-          return back()->with('success', $request->nome . ' removido com sucesso.');
+          $remover->delete();          
         }
         catch(\Exception $e){
           return back()->with('error',"Não foi possível remover o item ". $request->nome);
         }
+        return back()->with('success', $request->nome . ' removido com sucesso.');
     }
+
+    /**
+     * Update the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CrudRequest $request)    
+    {
+        try{
+            $crud = Crud::findOrFail($request->id);
+            $crud->update($request->all());
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/')->with('error','Erro ao atualizar os dados a operação foi cancelada: '. $e->getMessage());
+      }
+      return redirect('/')->with('success','Dados atualizados com sucesso!');
+        
+    }
+
+
 }

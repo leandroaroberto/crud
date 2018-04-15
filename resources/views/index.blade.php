@@ -12,7 +12,8 @@
       <th>Descrição</th>
       <th></th>
     </tr>
-    @foreach($dados as $dado)
+    
+    @forelse($dados as $dado)
       <tr>
           <td>{{$dado->nome}}</td>
           <td>{{ $dado->descricao}}</td>
@@ -24,7 +25,11 @@
 
           </td>
       </tr>
-    @endforeach
+    @empty
+      <tr>
+        <td colspan="2">Nenhum registro encontrado.</td>
+      </tr>
+    @endforelse
   </table>
 
 </div>

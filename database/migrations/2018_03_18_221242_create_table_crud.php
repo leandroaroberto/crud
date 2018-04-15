@@ -16,7 +16,12 @@ class CreateTableCrud extends Migration
       Schema::create('crud', function (Blueprint $table) {
           $table->increments('id');
           $table->string('nome',50);
+          $table->string('sobrenome',50);
+          $table->string('email',100)->unique();
           $table->string('descricao',100)->nullable();
+          $table->char('empresa',1)->default(1);
+          $table->string('cnpj',15);
+          $table->char('tipo',1)->default(1);          
           $table->timestamps();          
       });
     }

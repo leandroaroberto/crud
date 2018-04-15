@@ -8,6 +8,15 @@ class Crud extends Model
 {
     protected $table = "crud";
 
-    protected $fillable = ['nome','descricao'];
+    protected $fillable = ['nome','sobrenome','email','descricao','empresa','cnpj','tipo'];
+
+
+    public function setCnpjAttribute($cnpj)
+    {
+        $cnpj = str_ireplace( "/", "", $cnpj);
+        $cnpj = str_ireplace( "-", "", $cnpj);
+        $cnpj = str_ireplace( ".", "", $cnpj);        
+        $this->attributes['cnpj'] = $cnpj;
+    }
 
 }
