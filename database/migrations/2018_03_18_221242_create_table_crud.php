@@ -20,7 +20,7 @@ class CreateTableCrud extends Migration
           $table->string('email',100)->unique();
           $table->string('descricao',100)->nullable();
           $table->char('empresa',1)->default(1);
-          $table->string('cnpj',15);
+          $table->string('emp_cnpj',15);
           $table->char('tipo',1)->default(1);          
           $table->timestamps();          
       });

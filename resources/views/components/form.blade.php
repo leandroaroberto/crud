@@ -38,8 +38,8 @@
 </div>
 <div class="row form-group">
     <div class="col-md-12">
-        {{ Form::label('cnpj', 'CNPJ: ') }}    
-        {{ Form::text('cnpj', null, ['class' => 'form-control cnpj', 'placeholder' => 'Digite o CNPJ']) }}
+        {{ Form::label('emp_cnpj', 'CNPJ: ') }}    
+        {{ Form::text('emp_cnpj', null, ['class' => 'form-control cnpj', 'placeholder' => 'Digite o CNPJ']) }}
     </div>
 </div>
 

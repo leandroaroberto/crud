@@ -31,7 +31,7 @@ class CrudRequest extends FormRequest
             //'email' => 'required|email|max:50|unique:crud,email',
             'email' => 'required|email|max:50',
             //Rule::unique('crud')->ignore($this->id),
-            'cnpj' => 'required|cnpj',
+            'emp_cnpj' => 'required|cnpj',
             'tipo' => 'required',
         ];
     }
