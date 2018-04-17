@@ -178,6 +178,9 @@ return [
         Crud\Providers\RouteServiceProvider::class,
         // Laravel Collective
         Collective\Html\HtmlServiceProvider::class,
+        //Laravel cnpj validator 
+        geekcom\ValidatorDocs\ValidatorProvider::class,
+
       ],
 
     /*

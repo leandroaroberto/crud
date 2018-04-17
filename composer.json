@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "douglasresendemaciel/brazilian-documents-validator": "@dev",
         "fideloper/proxy": "~3.3",
+        "geekcom/validator-docs": "^1.2",
         "igorescobar/jquery-mask-plugin": "^1.14",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
