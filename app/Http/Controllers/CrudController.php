@@ -5,6 +5,7 @@ namespace Crud\Http\Controllers;
 use Illuminate\Http\Request;
 use Crud\Http\Requests\CrudRequest;
 use Crud\Crud;
+use Crud\Empresa;
 
 
 
@@ -109,6 +110,20 @@ class CrudController extends Controller
       }
       return redirect('/')->with('success','Dados atualizados com sucesso!');
         
+    }
+
+    public function empresas($id)
+    {
+        //$empresas = Empresa::where('id',$id);
+        $empresas = Empresa::find(1);
+
+
+        $arr = array();
+        foreach($empresas as $empresa)
+        {
+            $arr[] = $empresa->servicos()->nome;
+        }
+        dd($arr);
     }
 
 

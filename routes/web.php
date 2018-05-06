@@ -25,3 +25,5 @@ Route::get('/{id}', 'CrudController@edit')->name('edit');
 Route::post('/update', 'CrudController@update')->name('update');
 
 Route::post('/remover','CrudController@destroy')->name('remover');
+
+Route::get('/empresas/{id}', 'CrudController@empresas')->name('empresas');
