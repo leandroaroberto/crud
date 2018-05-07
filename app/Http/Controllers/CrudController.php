@@ -14,7 +14,7 @@ class CrudController extends Controller
 
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -46,18 +46,18 @@ class CrudController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CrudRequest $request)
-    {        
+    {
       try
       {
-        //$crud = Crud::findOrFail($request->id) ? $crud->update() : Crud::create($request->all());               
-        Crud::create($request->all());        
-      }  
+        //$crud = Crud::findOrFail($request->id) ? $crud->update() : Crud::create($request->all());
+        Crud::create($request->all());
+      }
       catch(\Exception $e)
       {
         return redirect('/')->with('error','Erro ao gravar os dados a operação foi cancelada: '. $e->getMessage());
       }
       return redirect('/')->with('success','Dados gravados com sucesso!');
-      
+
     }
 
     /**
@@ -84,7 +84,7 @@ class CrudController extends Controller
     {
         try{
           $remover = Crud::findOrFail($request->id);
-          $remover->delete();          
+          $remover->delete();
         }
         catch(\Exception $e){
           return back()->with('error',"Não foi possível remover o item ". $request->nome);
@@ -98,7 +98,7 @@ class CrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(CrudRequest $request)    
+    public function update(CrudRequest $request)
     {
         try{
             $crud = Crud::findOrFail($request->id);
@@ -109,21 +109,37 @@ class CrudController extends Controller
             return redirect('/')->with('error','Erro ao atualizar os dados a operação foi cancelada: '. $e->getMessage());
       }
       return redirect('/')->with('success','Dados atualizados com sucesso!');
-        
+
     }
 
-    public function empresas($id)
+    public function listEmpresas()
     {
-        //$empresas = Empresa::where('id',$id);
-        $empresas = Empresa::find(1);
+      $empresas = Empresa::all();
+      return view('empresas',compact('empresas'));
+    }
 
 
+    public function getEmpresa($id)
+    {
+        $empresas = Empresa::find($id)->get();
         $arr = array();
+        $arrServicos = array();
         foreach($empresas as $empresa)
         {
-            $arr[] = $empresa->servicos()->nome;
+            $arrServicos = null;
+            foreach($empresa->servicos as $servico)
+            {
+                $arrServicos[] = [$servico->nome, $servico->descricao];  
+            }
+            $arr[] = [
+                'ID' => $empresa->id,
+                'CNPJ' => $empresa->cnpj,               
+                'RazaoSocial' => $empresa->razao_social,
+                'servicos' => $arrServicos
+            ];
+            
         }
-        dd($arr);
+        return view('empresaInfo')->with(['empresa'=> $arr]);
     }
 
 

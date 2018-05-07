@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->    
+    <!-- Bootstrap CSS -->
     {{Html::style('css/bootstrap.min.css')}}
     {{Html::style('css/app.css')}}
     <title>CRUD</title>
@@ -19,8 +19,9 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="/add">Add</a>
-      <a class="dropdown-item" href="">Change</a>
+      <a class="dropdown-item" href="#">Change</a>
       <a class="dropdown-item" href="#">Remove</a>
+      <a class="dropdown-item" href="/empresas">Empresas</a>
     </div>
   </div>
 </div>
@@ -28,11 +29,11 @@
     @yield('content')
 
     <!-- JS scripts -->
-    {{Html::script('js/jquery-3.3.1.min.js')}}  
-    {{Html::script('js/jquery.mask.min.js')}}      
-    {{Html::script('js/popper.min.js')}}  
-    {{Html::script('js/bootstrap.min.js')}}   
-    {{Html::script('js/crud.js')}}  
-  
+    {{Html::script('js/jquery-3.3.1.min.js')}}
+    {{Html::script('js/jquery.mask.min.js')}}
+    {{Html::script('js/popper.min.js')}}
+    {{Html::script('js/bootstrap.min.js')}}
+    {{Html::script('js/crud.js')}}
+
   </body>
 </html>

@@ -18,12 +18,13 @@
 
 Route::get('/','CrudController@index');
 
+//Empresas
+Route::get('/empresas','CrudController@listEmpresas')->name('empresas');
+Route::get('/empresas/{id}', 'CrudController@getEmpresa')->name('empresa.view');
+
+
 Route::get('/add', 'CrudController@create');
 Route::post('/add', 'CrudController@store')->name('add');
-
-Route::get('/{id}', 'CrudController@edit')->name('edit');
 Route::post('/update', 'CrudController@update')->name('update');
-
 Route::post('/remover','CrudController@destroy')->name('remover');
-
-Route::get('/empresas/{id}', 'CrudController@empresas')->name('empresas');
+Route::get('/{id}', 'CrudController@edit')->name('edit');

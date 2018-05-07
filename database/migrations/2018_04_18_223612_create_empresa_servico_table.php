@@ -14,10 +14,10 @@ class CreateEmpresaServicoTable extends Migration
     public function up()
     {
         Schema::create('empresa_servico', function (Blueprint $table) {
-            $table->integer('empresas_id')->unsigned();
-            $table->foreign('empresas_id')->references('id')->on('empresas');
-            $table->integer('servicos_id')->unsigned();
-            $table->foreign('servicos_id')->references('id')->on('servicos');            
+            $table->integer('empresa_id')->unsigned();
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->integer('servico_id')->unsigned();
+            $table->foreign('servico_id')->references('id')->on('servicos');            
         });
     }
 
