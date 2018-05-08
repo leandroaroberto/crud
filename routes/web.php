@@ -22,6 +22,9 @@ Route::get('/','CrudController@index');
 Route::get('/empresas','CrudController@listEmpresas')->name('empresas');
 Route::get('/empresas/{id}', 'CrudController@getEmpresa')->name('empresa.view');
 
+//uploads
+Route::get('/uploads','UploadController@index');
+Route::post('/uploads','UploadController@upload')->name('upload.send');
 
 Route::get('/add', 'CrudController@create');
 Route::post('/add', 'CrudController@store')->name('add');

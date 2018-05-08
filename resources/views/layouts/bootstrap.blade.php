@@ -19,8 +19,7 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="/add">Add</a>
-      <a class="dropdown-item" href="#">Change</a>
-      <a class="dropdown-item" href="#">Remove</a>
+      <a class="dropdown-item" href="/uploads">Upload a file</a>
       <a class="dropdown-item" href="/empresas">Empresas</a>
     </div>
   </div>
