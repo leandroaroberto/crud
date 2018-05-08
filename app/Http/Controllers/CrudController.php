@@ -121,7 +121,7 @@ class CrudController extends Controller
 
     public function getEmpresa($id)
     {
-        $empresas = Empresa::find($id)->get();
+        $empresas = Empresa::where('id',$id)->get();
         $arr = array();
         $arrServicos = array();
         foreach($empresas as $empresa)
@@ -138,7 +138,7 @@ class CrudController extends Controller
                 'servicos' => $arrServicos
             ];
             
-        }
+        }  
         return view('empresaInfo')->with(['empresa'=> $arr]);
     }
 
