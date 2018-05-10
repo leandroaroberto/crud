@@ -1,5 +1,7 @@
 <?php
 
+use Crud\Mail\SendEmailMailable;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +27,13 @@ Route::get('/empresas/{id}', 'CrudController@getEmpresa')->name('empresa.view');
 //uploads
 Route::get('/uploads','UploadController@index');
 Route::post('/uploads','UploadController@upload')->name('upload.send');
+
+//sendMail
+
+Route::get('/sendmail',function(){
+    Mail::to('leoberto@gmail.com')->send(new SendEmailMailable());
+    return "E-mail sent successfuly.";
+});
 
 Route::get('/add', 'CrudController@create');
 Route::post('/add', 'CrudController@store')->name('add');
