@@ -1,7 +1,6 @@
 <?php
 
-use Crud\Mail\SendEmailMailable;
-use Illuminate\Support\Facades\Mail;
+use Crud\Jobs\SendEmailJob;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +30,11 @@ Route::post('/uploads','UploadController@upload')->name('upload.send');
 //sendMail
 
 Route::get('/sendmail',function(){
-    Mail::to('leoberto@gmail.com')->send(new SendEmailMailable());
+    SendEmailJob::dispatch()
+        ->delay(now()->addSeconds(5));
     return "E-mail sent successfuly.";
 });
+//php artisan queue:work
 
 Route::get('/add', 'CrudController@create');
 Route::post('/add', 'CrudController@store')->name('add');
