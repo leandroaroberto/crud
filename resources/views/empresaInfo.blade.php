@@ -34,7 +34,7 @@
   </div>
   <div class="row">
       <div class="col-md-12">
-        <a href="/empresas" class="btn btn-secondary btn-block" >Voltar</a>
+        <a href="../empresas" class="btn btn-secondary btn-block" >Voltar</a>
       </div>
   </div>
 
