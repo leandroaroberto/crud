@@ -1,0 +1,9 @@
+.zoom-left{
+    float:left;
+    width:412px;
+}
+.zoom-right{
+    float:left;
+    width:320px;
+    padding:20px;
+}

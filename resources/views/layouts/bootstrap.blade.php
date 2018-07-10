@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     {{Html::style('css/bootstrap.min.css')}}
     {{Html::style('css/app.css')}}
+    {{Html::style('css/elevate-zoom.css')}}
     <title>CRUD</title>
   </head>
   <body>
@@ -32,7 +33,11 @@
     {{Html::script('js/jquery.mask.min.js')}}
     {{Html::script('js/popper.min.js')}}
     {{Html::script('js/bootstrap.min.js')}}
-    {{Html::script('js/crud.js')}}
+    {{Html::script('js/crud.js')}}    
+    {{Html::script('elevatezoom-master/jquery.elevatezoom.js')}}
+    {{Html::script('js/elevate-zoom.js')}}
+
+
 
   </body>
 </html>
