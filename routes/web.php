@@ -40,4 +40,8 @@ Route::get('/add', 'CrudController@create');
 Route::post('/add', 'CrudController@store')->name('add');
 Route::post('/update', 'CrudController@update')->name('update');
 Route::post('/remover','CrudController@destroy')->name('remover');
+Route::get('/graph','CrudController@graph')->name('graph');
+
+
+
 Route::get('/{id}', 'CrudController@edit')->name('edit');

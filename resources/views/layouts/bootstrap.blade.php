@@ -21,7 +21,9 @@
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="add">Add</a>
       <a class="dropdown-item" href="uploads">Upload a file</a>
-      <a class="dropdown-item" href="empresas">Empresas</a>
+      <a class="dropdown-item" href="empresas">Companies</a>
+      <a class="dropdown-item" href="graph">Graph</a>
+
     </div>
   </div>
 </div>

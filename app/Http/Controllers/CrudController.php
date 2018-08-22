@@ -142,5 +142,10 @@ class CrudController extends Controller
         return view('empresaInfo')->with(['empresa'=> $arr]);
     }
 
+    public function graph()
+    {        
+        return view('graph.combochart');
+    }
+
 
 }
